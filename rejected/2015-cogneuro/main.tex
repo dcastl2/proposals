@@ -1,0 +1,1078 @@
+\documentclass[hidelinks,11pt]{article}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{tocloft}
+\usepackage{natbib}
+\hypersetup {
+ colorlinks,
+ linkcolor={red!50!black},
+ citecolor={red!50!black},
+ urlcolor={red!80!black} 
+}
+
+\usepackage{geometry}
+\geometry{
+ rmargin=1.5in
+,lmargin=1.5in
+,tmargin=1.5in
+,bmargin=1.5in
+}
+
+\renewcommand{\refname}{}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{8pt}
+%\setcounter{secnumdepth}{4}
+
+\begin{document}
+\title{LATTICE: Learning Attentional Traits In Tutoring Interactively for Cognitive Engagement}
+\maketitle
+\thispagestyle{empty}
+\pagestyle{empty}
+
+\tableofcontents
+\pagebreak
+
+%\renewcommand\thesection{Section \arabic{section}: }
+%\renewcommand\thesubsection{Subsection \arabic{section}.\arabic{subsection}: }
+%\renewcommand\thesubsubsection{Subsubsection \arabic{section}.\arabic{subsection}.\arabic{subsubsection}: }
+%\renewcommand\theparagraph{Paragraph \arabic{section}.\arabic{subsection}.\arabic{subsubsection}.\arabic{paragraph}.}
+
+\section{Project Summary}
+
+\vspace{-6pt}
+%\paragraph{}
+In computer programming instruction, the nature of attention given during the
+problem-solving process is a large factor in learning problem-solving skills
+and in performance of students. However, cueing attention to the end of
+facilitating problem-solving is a challenging task, as is formulating problems
+which are engaging to students so as to direct attention to the problem-solving
+process.  Intelligent tutoring systems (ITS) are computer-aided teaching and
+assessment tools designed to aid and supplement course instruction; most ITS
+systems provide adaptive tutoring, tailoring both the course content (facts,
+examples, diagrams, etc.) and assessments (quizzes, tests, homeworks, etc.) to
+students, in the hopes of engaging them.  However, there is to date no
+comprehensive model of the mediating effect of attention on problem-solving in
+an ITS. 
+
+%\paragraph{}
+The proposed project aims to construct such a model by utilizing established
+EEG and eye-tracking measures of attention, and using known factors (cognitive
+load, self-efficacy, domain-relevance) as a basis for further exploration. In
+so doing, it also aims to incorporate the model into an ITS to provide a
+practical tool for STEM instruction, which in addition to providing
+auto-grading capability, is able to engage student interests and direct
+atttention in a manner which maximally facilitates problem-solving.
+
+%\subsection{Intellectual Merit}
+
+\textbf{Intellectual Merit}.
+%\paragraph{}
+The proposed project aims to advance knowledge by identifying changes in
+engagement due to variables associated with problems.  These include Bloom's
+cognitive taxonomic level (knowledge, comprehension, application, analysis,
+evaluation, synthesis), problem difficulty (easy, medium, hard), and domain
+(biology, chemistry, physics, art, music, etc.).  We consider these per-concept
+(for-loops, arrays, sorting algorithms, etc.).
+
+%\paragraph{}
+Furthermore, the project endeavors to explore the specific effects of problems
+on engagement and to identify a means of scheduling problems and course
+content, such that engagement is achieved in a way which maximally facilitates
+problem-solving. Finally, it aims to leverage the unique potential of a
+computer-aided tutoring system to assist in both conscious and unconscious
+cognitive processes during problem-solving in a manner which traditional
+instruction cannot. Specifically, masked priming has been shown to be effective
+at raising self-efficacy {\citep{jraidi2011}}, and visual priming has been shown
+to facilitate insight-based problem solving {\citep{grant2003}}.  The project will
+aim to explore the limitations of this assistance.
+
+%\subsection{Broader Impact}
+
+\textbf{Broader Impact}.
+%\paragraph{}
+The project has the potential to assist in STEM instruction, particularly in
+helping students overcome attention-related barriers and impasses during the
+problem-solving process.  The auto-grading component may be considered to
+provide a broad positive impact by relieving teachers and their assistants of
+manual grading tasks, and allowing immediate feedback to be given to students.
+Self-efficacy, a major factor in engagement with material and problem-solving
+performance according to community perceptions {\citep{vivian2014}}, has been
+shown to differ in STEM disciplines between women and men {\citep{boy2013}}
+{\citep{gonzalez2012}, low-SES and high-SES groups \citep{gonzalez2012}}, and
+minority and majority groups.  It is possible that use of affective
+interventions by the ITS with these groups may improve participation and
+retention {\citep{jraidi2011}}. 
+
+%\paragraph{}
+In addition, an intelligent tutoring system has the ability to aid students
+with disabilities, as it can be used remotely; and it uniquely offers the
+opportunity for a student to self-teach in a way which stimulates the
+motivation to do so.  The ITS also offers further research potential in
+data-intensive educational psychology, which may improve accessibility of STEM
+resources to women, low-SES and minority groups, and persons with disabilities.
+
+
+\pagebreak
+\section{ Project Description }
+
+\subsection{ Objectives of the Proposed Work }
+
+%\paragraph{}
+The major focus of the proposed study is the automated discovery of knowledge
+about the effect of problems on attentional engagement, and the use of
+attentional cues to assist in problem-solving and learning processes.  To this
+end, we view a problem not only as a measurement tool, but as a means of
+affecting the student's cognitive processes in order to fulfill a particular
+learning objective. The end-product of the study will take the form of an ITS
+which can apply research findings to STEM courses.  We envision that the ITS
+will supplement ordinary course instruction; it will act as a review aid, a
+guide for hands-on problem-solving, and an automated means of assessment.
+
+%\paragraph{}
+There are two meanings of the phrase ``directing attention''. One is attentional
+engagement; this is arousing the student's interest in the problem, or
+directing their attention to the problem-solving process. The second is
+attentional cueing; given that the student's attention is directed toward the
+problem-solving process, that is highlighting what steps or parts of the
+problem to pay attention to in order to gather the information to solve it
+{\citep{rouinfar2014}}.  Engagement has underlying affective processes; cueing guides
+cognitive processes. 
+
+%\paragraph{}
+To give an example, suppose an instructor wishes to teach a young student how
+to do the multiplication: ``10 * 40 = ?'' The instructor may engage the student
+by providing a context, such as to say that the ``10'' refers to ten pieces of
+candy, and ``40'' refers to a number of hours spent doing homework. Candy
+interests the student; by aligning the natural interest in candy with the
+problem, attention is engaged. 
+
+%\paragraph{}
+Now once attention has been directed to the problem on account of the student's
+engagement, it may be directed internally to the end of solving the problem.
+The instructor may then explain the rule that when two numbers with trailing
+zeroes are to be multiplied, one only need multiply the two numbers and tack on
+as many trailing zeros as one sees in the multiplier and multiplicand.  The
+instructor might then point to the ``1'' and the ``4'' and ask what the product
+of these is; then point to the ``0'' in ``10'' and the ``0'' in ``40'' to count
+them, to arrive at the product ``400''.  This is an act of directing visual
+attention; by pointing, the instructor is cueing the student to attend to the
+information needed to solve the problem, while at the same time explaining the
+internal cognitive processes used to arrive at the solution.
+ 
+%\paragraph{}
+With this understanding of attentional direction in mind, what follows is
+an elaboration of the research objectives.
+
+%\paragraph{}
+\textbf{Objective 1}: To find what factors among problems and among students
+account for differences in attentional engagement; to assign problems which
+engage attention. What specific properties of course content or assessment
+items have an influence on student attentional states--that is, what properties
+covary with attentional states? What cannot be accounted for by factors which
+are known to play into problem-solving? Can knowledge of unknown factors be
+discovered and used to aid the student’s problem-solving efforts? What follows
+is an explanation of what is meant by properties of course content or
+assessment items.
+% TODO: mention ERPs here
+
+
+%\paragraph{}
+Bloom's taxonomy has been shown to be amenable to computer science education
+{\citep{thompson2008}}, and can provide a guideline for cognitive development with
+respect to learning concepts in a course.  It is particularly useful for
+identifying barriers to functioning at higher cognitive levels, as in the case
+of a student who understands a syntax rule (i.e. Comprehension) but has
+difficulty applying it to a particular situation (i.e. Application). Annotating
+problems with Bloom levels and checking mean differences in student performance
+per-level is often quick to reveal specific developmental barriers.
+It may also have an effect on engagement.
+
+%\paragraph{} 
+Students who take introductory programming courses in many cases
+do so to fill a requirement for a STEM curriculum other than computer science;
+or for a general education requirement. These students often have other, more
+pronounced academic interests. These may be referred to as domains of interest
+(or, as in our problem annotations, simply ``domain''). Most of these lie
+within STEM; but even some students with declared STEM majors have a
+prediliction for the arts {\citep{penn2004}}.  A lack of engagement of student
+interests in creative pursuits, such as art or music, is known to account for a
+portion of attrition in STEM undergraduate programs; by these students'
+accounts, their curriculum does not involve enough opportunity for creativity
+or open-ended problem-solving {\citep{penn2004}}.  It is simple enough to create
+problems that deal with art or music; and others that deal with math or
+physics, to satisfy everyone; but assigning these specifically to those
+students who are exclusively interested in them, and grading them accordingly,
+is a daunting task. An ITS with access to a large problem bank has the
+capability to do so, with only minimal effort on the part of the course
+instructor.  Furthermore, an attention measure integrated with an ITS enables
+the ITS to identfy the student's domain interests, even if the student is
+unsure of or undecided on them.  So long as the ITS ensures fairness--that is,
+that the students are learning the same skills at the same level of
+expertise--one can imagine that it only helps to adapt all other things,
+including domain interests.
+
+%\paragraph{} 
+Students vary in how problem difficulty influences their engagement. Some
+prefer for expectations to be set high, and like difficulty for its own sake;
+others see difficulty as a consideration secondary to learning---the problems
+should only be as difficult as is required to learn the problem-solving skills.
+Success and failure alike on difficult problems has an impact on self-efficacy,
+which can in turn impact engagement with further problem-solving
+{\citep{mcquiggan2007}}.  Solving difficult problems over a large span of time
+can impose a high cognitive load on the student, even regardless of the skill
+level they have obtained, which can reduce engagement {\citep{mcquiggan2007}}.
+The ideal difficulty is the one which ensures learning outcomes.  An ITS could
+potentially find it, if it had integrated measures of attention and models of
+self-efficacy and cognitive load for each student.  There exist models of
+cognitive load using EEG pattern recognition {\citep{gevins1998, galan2012,
+haapalainen2013, mcquiggan2007, stevens2013}}, and tests of self-efficacy
+specifically designed for STEM courses {\citep{milner2014}}, which can be
+incorporated into an ITS.
+
+%\paragraph{}
+These variables may interact in ways yet to be observed.  Methods to measure
+engagement exist in isolation: there is a way to determine term relevance from
+ERPs during reading tasks {\citep{eugster2014}}, and divided attention
+{\citep{rodrigue2015}}. There is also a way to perform classification of emotions
+in ITS using ERPs {\citep{feidakis2011}}, and provide an overall estimate of
+engagmeent using both ERPs {\citep{galan2012}} and computer-vision based methods
+{\citep{narayanan2014}}.  Differences in domain expertise can lend to enhanced
+comprehension of material, as evidenced by eye tracking methods
+{\citep{gegenfurtner2011}}. These methods and models are not unified, however;
+there may also be factors other than the ones covered which influence student
+engagement. A determination of those factors requires an exploration of data. 
+
+%\paragraph{}
+\textbf{Objective 2}: To find the effect of specific problem schedules on
+engagement as it relates to cognitive load, self-efficacy, and other possible
+factors; to create a schedule of problems in order to maximize engagement to
+the end of improving problem-solving performance. Beyond the influence of
+individual problems on attention, what influence does a specific problem
+ordering have on the changing attentional state?  What about setting the
+pre-conditions for the student to arrive at an attentional state which is
+conducive to solving a later problem? 
+
+%\paragraph{}
+To begin answering the question above, one may turn toward previous research on
+cognitive load models and self-efficacy.  Cognitive load refers to the amount
+of effort used in working memory. When a student solves a series of difficult
+problems, this imposes a high cognitive load on the student {\citep{galan2012}}.
+This exhausts the student; this in turn affects their attentional
+engagement with further problems in the schedule.  There exist models of
+cognitive load based on a power spectral density (PSD) extracted from EEG
+signals obtained while the student is working problems, and the student's
+perceived difficulty of the problem {\citep{galan2012}}.  Potentially, a model of
+cognitive load could be incorporated into an ITS to schedule problems in such a
+fashion as to minimize cognitive load over time; intuitively this would allow
+for maximal attentional engagement and thus, problem-solving performance. 
+
+%\paragraph{}
+Another factor is self-efficacy. Self-efficacy refers to the student's
+confidence in her perceived ability to perform a certain task. It is partly a
+function of success in performing similar previous tasks
+{\citep{mcquiggan2007}}.  A student who performs well on a series of problems
+would be expected to have high self-efficacy for solving those types of
+problems; likewise a student who does not perform well would be expected to
+have low self-efficacy. Furthermore, the perceived difficulty of the solved
+problems plays into self-efficacy {\citep{mcquiggan2007, milner2014}}; solving
+problems which are perceived to be hard has a more positive impact than solving
+ones which are perceived to be easy. It is easy to imagine a student who falls
+into a ``spiral of doom'' for reasons related to self-efficacy; poor
+performance at onset lowers self-efficacy, which in turn lowers the odds of
+performing well on similar tasks in the future.  There exist models of
+self-efficacy based on observable interactions with an ITS
+{\citep{mcquiggan2007}}; thus an ITS could potentially intervene to regulate
+self-efficacy by scheduling problems which it deems the student is likely to
+solve based on a probabilistic model of the student's problem-solving success
+(accounting for Bloom level, domain, difficulty, etc.).
+
+%\paragraph{}
+What about cognitively primed information as well (such as knowledge which is
+recalled while solving previous problems)?  Suppose a hard problem requires
+knowledge which has to be recalled in the course of solving an easy problem.
+Solving the easy problem first requires the student to recall the knowledge.
+Now that it is accessible to working memory, it is more likely to be recalled
+and used when solving the hard problem, thereby increasing the chances of
+success of solving the hard problem {\citep{jraidi2011}}.  This technique of
+``loading'' concepts into memory to make them more available for later use is
+known as priming.  The priming described here is cognitive in nature.  The goal
+of priming in this case is not to engage attention, but rather increase the
+odds that attention is directed to the information needed to solve the problem.
+An ITS could potentially schedule problems in such a fashion as to prime
+information optimally; such that for each problem, the problems scheduled
+before it prime information necessary to solve the current problem. Problems
+may be sorted by ``information dependencies''; i.e. prior problems call on
+information needed for later problems, and scheduled tightly so that
+information from previous problems remains available.
+
+%\paragraph{}
+Considering that cognitive load, self-efficacy, and cognitive priming may play
+a role in how the schedule could engage (and direct) attention, there remains
+an open question of how these could combine to influence the engagement and
+direction of attention. Ideally, an ITS would construct models of cognitive
+load and self-efficacy for each student, and ``information dependencies''
+needed for priming; then using this information, create a schedule which
+maximally facilitates problem-solving. However, schedules based on only one of
+these factors may be suboptimal, especially if it is at odds with other
+factors.  The issue, then, is how to juggle cognitive load, self-efficacy, and
+information dependencies in a way that maximally facilitates problem-solving.
+
+%As an example, suppose that based on Jane’s response set in a 1-hour block, a
+%vector autoregression model reveals that Jane’s cognitive load is highest when
+%either the item difficulty or Bloom taxonomic level is raised by +1 from her
+%profile (see above), and it is alleviated when difficulty falls by -1.  Can we
+%extract this knowledge from Jane’s response set automatically, then use it to
+%schedule so that the items match Jane’s ability to accept the appropriate
+%cognitive load, with the intent of moving her upward in item difficulty and
+%Bloom level?  Would this approach work better than a random schedule?  Also,
+%suppose that a multivariate regression analysis of EEG spectral data on problem
+%response accuracy for the class shows that theta waves are higher for students
+%who successfully solve synthesis problems. Let us also suppose they are higher
+%when students take in factual content. Thus the ITS schedules factual content
+%prior a synthesis problem to negotiate an attentional state which is conducive
+%to solving the problem; in addition the factual content relates to the
+%synthesis problem in that it primes concepts used in solving the problem.  How
+%well does this work compared to a random schedule?
+
+%Suppose Jane participates more in class (responding) when problems just above
+%her “comfort zone” are scheduled.  John, on the other hand, is motivated to
+%participate by variety in the application domain.  Can the ITS discover this
+%knowledge, and use it to schedule problems which motivate participation?
+
+%\paragraph{}
+\textbf{Objective 3}: To find how, and when, an ITS can help to cue attention
+to improve problem-solving performance.  How can the ITS automatically discover
+relevant information to cue the student's visual attention to the end of
+solving the problem?  Would the attentional cueing be disruptive in the
+long-term?
+
+%\paragraph{}
+One way of understanding visual attention and oculomotor processing is by use
+of eye movement tracking technology.  For example, in the game of chess, eye
+movement tracking can be used to derive what is referred to as a scanpath, or
+the sequence of eye movements taken over time {\citep{reingold2011}}.  By
+looking at scanpath data, one can tell the difference between novice and expert
+players, and identify the areas on the chess board that expert players attend
+to.  Is it possible to improving problem-solving by prompting eye movements in
+such a fashion as to direct attention to relevant information?  Studies have
+shown that visual cues do in fact have a positive effect on problem-solving
+{\citep{grant2003, rouinfar2014}}. In this sense, we can treat eye movements as
+an independent variable {\citep{reingold2011}}.
+
+%\paragraph{}
+Insofar as problem-solving in programming is concerned, visual attention plays
+a large role in comprehending and analyzing information in domain areas
+{\citep{reingold2011}}.  One test of code comprehension is to mentally execute
+a code; that is, predict what the code would output when run.  Given two codes
+with a small difference, an instructor can run the codes on a computer to see
+how the difference in the code makes a difference in the output.  On a test,
+the instructor can later make a slightly different change and ask what the code
+does.  When a student mentally executes several codes of this same type, visual
+attention should select the differences between the codes; then inner cognitive
+processes should reason how differences in the codes lead to differences in the
+output.  In human tutoring, an instructor may point to differences in codes to
+cue the student's visual attention; however this process would be very
+time-consuming to do for every problem that involves oculomotor processing.
+Thus an interesting question arises: is it possible for an ITS to look at the
+eye movements of students who expertly solve problems that rely on visual
+attention, filter the noise from them, then use the resulting scanpath to cue
+novice students to tend to the relevant information, in the hopes that the cues
+facilitate their problem-solving?
+% TODO: fill the gap here.
+
+%\paragraph{}
+When the need for visual cues arises, there is potential to influence
+self-efficacy positively. For the purpose of raising self-efficacy, intuitively
+it is better to have visual attention to appear to be directed internally than
+by an external influence, such as an instructor.  ITS possesses the potential
+to assess this hypothesis, and possibly positively influence cognitive
+processes on more than a conscious level via masked priming. Whereas ordinary
+priming aims to make the information consciously available, masked priming aims
+to make it available only as long as it takes to be processed unconsciously,
+but not consciously perceived.  It is possible to cue a student using
+superliminal cues (flashing red dot for 500ms) or subliminal cues (flashing red
+dot for 100ms).
+
+%\paragraph{}
+One caveat is the possibility of a Stroop-like effect. A Stroop effect occurs
+when an irrelevant information is added to the task which disrupts processing.
+In the original Stroop task control condition, color words such as ``red'' were
+presented on the screen in the colors indicated by the words; then participants
+were asked to classify them.  In the experimental condition, the color words
+e.g. ``red'' were presented on the screen in some other color, e.g.  blue. This
+had a disruptive effect on classification, and it was found to take longer
+{\citep{stroop1935}}.  A similar effect has been observed for classification tasks
+involving masked priming {\citep{neely1977}}.  Therefore the possibility arises
+that it is not always facilitatory to cue visual attention with it.
+Intuitively, it is better to cue visual attention when it is not already being
+directed in an ongoing oculomotor process; in particular when the student is at
+an impasse.  Judging from cursor movements, idleness, and eye dilation, it is
+possible for an ITS to detect whether or not the student is at an impasse in
+the problem-solving process {\citep{narayanan2014}}. With this detection, it is
+possible to experiment with the effect of these cueing interventions. 
+
+%ITS possesses the potential to influence cognitive processing on more than a
+%conscious level.
+
+%Suppose Jane hits an impasse during a debugging problem.  Can we direct her
+%visual attention to the problem areas by means of masked priming (flashing a
+%red dot)?  In particular, can we copy the eye movements of students who solved
+%similar problems and use them to guide Jane?  Would such an intervention aid or
+%disrupt her efforts?  Also, suppose John appears to be demotivated because of
+%recent failures (even in the course of following an optimal item schedule) and
+%now he is faced with a challenging problem. Can we intervene with masked
+%priming to raise self-efficacy (and what stimulus do we use, given what is
+%known about John?), and follow up with cognitive priming to raise the chances
+%he solves the problem?  Would (and when would) such an intervention have a
+%positive impact on future performance?  What about long-term effects--could
+%students become dependent on too much “unconscious assistance”?
+
+%From the above research questions, we derive hypotheses in the form of the
+%following claims:
+
+%Hypothesis 1: For each student, a probabilistic model of success (i.e., for
+%Hypothesis 1: For each student, a probabilistic model of success (i.e., for
+%each problem type, probability that the student will be able to solve it) can
+%be improved by discovering and including latent factors.
+ 
+%Hypothesis 2: For each student there exists a particular schedule X which
+%improves mean performance on the items in X more than a random schedule Y which
+%measures the same underlying constructs (due to the effect that X has on
+%attention, cognitive load, and memory).
+ 
+%Hypothesis 3: For each student there exists a particular schedule X which
+%improves mean performance on measures of affective engagement over a random
+%schedule Y which measures the same underlying constructs (due to the effect
+%that X has on attention).
+ 
+%Hypothesis 4: Masked cognitive priming improves problem-solving performance
+%provided the student is at an impasse at the time of priming; otherwise it
+%impedes performance due to a Stroop effect.
+
+
+\subsection{ Project Plan; Experimental Methods and Procedures  }
+
+\subsubsection{ Materials.  }
+
+%\paragraph{}
+\textbf{Attention Measures}:  There are two proposed measures of attention.
+EEG has been shown to be effective in profiling attention {\citep{alzoubi2008,
+li2011, rodrigue2015, chaouachi2012}}.  We propose the use of research-grade
+EEG headsets, similar to those used in previous studies on human interactions
+with ITS {\citep{szafir2013, li2011, haapalainen2013, galan2012}}.  We desire
+such headsets for their ability to enable on-line analysis of the data, so that
+the ITS may respond adaptively to detected ERPs in the signals. To effectively
+and practically gauge attention, we seek to measure accessible sites at the
+frontal area that do not require head-shaving; using the 10-20 international
+system notation, we are interested in Fp1, Fp2, F7, F8.  By limiting ourselves
+to 4 channels on the frontal area, our study as well as potential treatments
+which it may produce will be able to be implemented economically without
+compromising accuracy of our models. 
+
+%\paragraph{}
+Also, eye movement tracking is effective at gauging visual attention, in
+addition to being an indicator of cognitive processes underlying a student’s
+problem-solving approach.   We would also like to examine eye movements as an
+independent variable.  A study has shown that when eye movements are directed
+in a way that mimics experts’ eye movements, performance on visual tasks
+improves {\citep{grant2003}}.
+
+In engineering disciplines, about half of efforts to reform educational policy
+(including the institution of ITS) outright fail {\citep{henderson2011}}.  This
+is thought to be in part due to an educational paradigm or tutoring system
+which is less inaccessible to instructors or students than a traditional
+instruction paradigm. Bearing that in mind, chances of adoption of an ITS are
+best when the hardware technology is easily accessible.  Thus the use of
+consumer-grade eye tracking hardware (i.e. a webcam) and software (open-source)
+is proposed.
+
+%\paragraph{}
+\textbf{The ITS}:  Since the intelligent tutoring system plays such a pivotal
+role in the study, here we discuss at some length the structure of the ITS,
+including its databases and underlying data representions of student
+performance.
+
+An intelligent tutoring system has been developed for intro-level
+programming courses.  The ITS has content (e.g. raw facts, examples, diagrams,
+etc.) and assessment (e.g. problems, questions) databases. The assessment
+database has the following fields (possible values in the fields are
+capitalized to distinguish them as field values):
+
+\begin{itemize}
+
+  \item Bloom level.  This can be Knowledge, Comprehension, Application,
+   Analysis, Evaluation, or Synthesis.  The Bloom level is decided when
+   making the question (there is no automated means of obtaining it, but
+   to some extent it is dependent on the format of the problem).
+
+   \item Domain.  This can be Biology, Chemistry, Physics, Mathematics,
+   Psychology, Computer Science, Geography, Art, or Music.  Since computer
+   programming problems have a wide array of potential applications, making
+   domain-relevant problems is limited only by the instructor's imagination.
+   If a problem has no connection to a domain other than computer science, or
+   is a traditional example in computer science, it is labelled as Computer
+   Science.
+
+   \item Type.  This is the format of the problem; it can be True/False,
+   Multiple Choice, Short Answer, Freewriting, or Code Writing. Code Writing is
+   also the category used for fill-in-the-blank type problems, where a student
+   reads a code with missing elements and must fill in the missing pieces to
+   get a certain output or fulfill a certain objective. Even in a programming
+   class, occasionally there is a need for freewriting questions, particularly
+   to test for Comprehension of concepts (since it requires explanation on the
+   part of the student); also, they are amenable to Evaluation (such as in
+   proving a result, explaining why a language construct may be useful, or
+   providing criticism of a programming technique).
+
+   \item Difficulty.  That is, problem difficulty measured on a 5-point scale,
+   with 1-Very Easy, 2-Easy, 3-Medium, 4-Hard, 5-Very Hard. This is either an
+   initial guess of the difficulty (if the problem has not been given before),
+   or is based on the percentage of students who passed it satisfactorily (i.e.
+   received more than 70\% of the total credit) when they took it. The
+   percentage-to-difficulty mapping is broken down by a 10-percentage-point
+   scale, as with grade letters (starting at 50\% for very hard, 60\% for hard,
+   etc., up to 90\% for very easy). 
+
+   \item Concept.  This is the particular concept being tested.  For example,
+   Variables, Expressions, Boolean Logic, For-Loops, etc. 
+   
+   \item Question.  This is the question text.
+
+   \item Supplementary Information.  If a diagram or a code is needed to
+   supplement the question, then it can be included or referenced here. 
+
+   \item Solution.  In the case of all questions, information needed to auto-grade
+   the student's response is included here. With true/false, a 'T' or 'F' is
+   given; with multiple choice, the correct index for the answer.  For short
+   answer and code writing, variants on an instructor's solution are given; for
+   short answer in particular, there is also a constraint on the number of words
+   allowed.  Freewriting is manually graded, but guidelines are provided in case a
+   teaching assistant (or someone other than the designer of the question) does
+   the grading.
+
+\end{itemize}
+
+From this, it becomes clear that although the current ITS is geared toward
+programming instruction, it is adaptable to STEM instruction in other subjects;
+what makes it specific to programming is the inclusion of code writing problems
+as a possible type, the fact that it has been specifically tested on
+students of introductory courses, and its code-autograding component.
+
+%\paragraph{} 
+The ITS also contains auto-graders for true/false and multiple choice.  The
+support for the code auto-grader is relatively primitive; a more advanced code
+auto-grader based on a machine learning approach is planned
+{\citep{shashank2014}}. Auto-graders for short answer problems are also planned.
+The short-answer auto-grader will use a method in which the Stanford Dependency
+Parser is used to parse the answer; then similarity to the each of the possible
+instructor's solutions will be assessed to yield a grade {\citep{mohler2011}}. 
+
+%\paragraph{}
+The student can be profiled by examining performance per-concept, Bloom level,
+and difficulty level.  For example, a student may have high performance with
+respect to Comprehension of For-Loops at Medium difficulty, but low performance
+with respect to Application of Boolean Logic at Easy difficulty.  The
+percentage of credit awarded for each $concept \times Bloom level \times
+difficulty$ can be calculated and loaded into a 3D matrix, a lattice-like
+structure which we refer to as the student's performance lattice, or simply
+lattice. We refer to each element of the lattice as a cell.
+
+%\paragraph{}
+As an alternative to percentage-based calculation, Item Response Theory (IRT)
+is used to provide estimates of a student's ability level for each cell.  IRT
+provides a superior estimate of what is referred to as trait ability--that is,
+whatever ability corresponds to the cell (e.g. Medium-difficulty Comprehension
+of For-Loops). Whereas classical test theory (CTT) looks at the student's score
+relative to the class distribution, IRT takes into account several other
+factors. These include the item discrimination, item difficulty, and
+probability of guessing. Item discrimination tells how good of an indicator the
+question is of trait ability (it is based on how many well-performing students
+pass it). Item difficulty is based on the percentage of students who
+satisfactorily pass the question. The probability of guessing applies to
+True/False (.5) and Multiple Choice (1/n) questions, and is set to 0 for
+open-ended questions.  The logic behind IRT is that poorly discriminating
+questions should not count as much for estimating a student's trait ability,
+higher-difficulty questions should count more for it, and success on questions
+which have a high probability of guessing do not necessarily provide an
+accurate measure of trait ability (e.g. a score of 50\% on a True/False
+Knowledge test does not indicate that a student knows 50\% of the material)
+{\citep{embretson2000}}.
+
+%\paragraph{}
+The utility of profiling the student's performance with respect to these
+categories is in scheduling problems which cover all the concepts and Bloom
+levels.  The end-goal of any programming course is Synthesis of code using the
+highest-level concepts covered in the course (in an introductory course, this
+may be Matrices, Pointers, etc.).  Once a student performs satisfactorily on a
+cell, the ITS need not schedule any more problems for that cell; it may proceed
+to higher concepts, Bloom levels, or difficulties.  To ensure synchronization
+with other students in the course, thresholds may imposed for given times (e.g.
+it may require that halfway through the course, the student should have
+mastered Medium-difficulty Synthesis of For-Loops).
+
+%\paragraph{}
+The ITS also features a simple and clean web interface which allows for the
+student to type in responses and receive immediate feedback from the
+auto-grader, except in the case of freewriting questions. The student logs in
+through a secure HTTPS login interface. Raw response data is stored on a
+separate database server and is only accessible by the instructor.
+
+%\paragraph{}
+The ITS is highly amenable to the changes required to collect EEG and eye
+movement data, as well as data from other psychological measures. A JavaScript
+program can be written to send locally-collected data to the remote database
+once a trial is finished.  Also, items from surveys, questionnaires, and the
+like can be seamlessly integrated into or appended to the problem schedule.
+
+\subsubsection{ Participants }
+
+%\paragraph{}
+To recruit participants, we offer a baseline extra credit to students in
+intro-level computer science courses to participate in experiments to improve
+our ITS.  To maintain incentive to solve problems, we award additional extra
+credit when a student solves a problem successfully.
+
+% TODO: ask for information on distribution of male/female, ethnic minorities,
+% and other demographics from Alena
+
+\subsubsection{ Methods }
+
+%\paragraph{}
+Participants will be seated in a distraction-free environment with a computer
+and web browser which can connect to the ITS server.  Here, they will be
+briefed about the nature of the experiment (or data collection process) and
+asked if they have any questions. They will then be equipped with an EEG
+headset according to the 10-20 international system.  
+
+% TODO: I need to decide what eye tracking software to use. Preferable something
+% easy but open-source and similar to what Dr. Beck uses.
+
+%\paragraph{}
+Finally, they will be directed to log in to the ITS to begin solving a schedule
+of problems.
+
+%\paragraph{}
+
+\textbf{Preliminary data collection}.  This will also provide an opportunity to
+ensure that equipment is functioning properly before experimental data is
+collected.  A random schedule will be given to provide estimates of item
+discrimination and item difficulty. From this data, models of self-efficacy and
+cognitive load will be constructed using results of previous studies.  During
+this phase, eye movement data of students who successfully solve problems with
+a visual component (in particular code execution and debugging problems) will
+be collected for Experiment 3; scanpaths will be isolated from the eye movement
+data. 
+
+%\paragraph{}
+\textbf{Experiment 1}. The first question in the schedule will ask the student
+for the highest concept covered in her course and the student’s estimation of
+her trait ability with respect to that concept.  This will set an estimate of
+the difficulty threshold for the ITS (so that it does not schedule problems
+harder than the student can solve).  A random schedule of problems covering all
+preceding concepts will then be given and all raw responses collected.  Halfway
+through the schedule, the ITS will construct a probabilistic success model for
+the student.  For the control condition, the remainder of the schedule will be
+random.  For the experimental condition, questions will be scheduled based on
+the probabilistic model.  For each condition, the question ordering past the
+halfway point will be random.
+
+%\paragraph{}
+\textbf{Experiment 2}. The experiment will follow the same approach as
+Experiment 1, except the ITS will utilize models of self-efficacy and cognitive
+load adaptively, as well as information dependencies among problems, and
+schedule problems based on a probabilistic estimate of problem-solving success.
+During this phase of the study, we will experiment with creating a hybrid
+model. 
+
+%\paragraph{}
+\textbf{Experiment 3a}. The experiment will follow the same approach as
+Experiment 1, except the problem types will be restricted to those with a
+visual component (mental code execution to predict output, code debugging).
+Preliminary data will have been collected to record the eye movement data of
+students who successfully solve the problems, then isolate their scanpaths.  In
+the control condition, problems will be presented as normal.  In one
+experimental condition, the masked priming cues (flashing red dots, or
+highlighted text) giving the average scanpath will be displayed for the student
+regardless of the student’s attentional state as measured by EEG or eye
+tracking. In a second experimental condition, cues will be displayed only if
+the student is at an impasse, as measured by long eye fixation.  The effect on
+self-efficacy and problem-solving success will be measured.
+
+%\paragraph{}
+\textbf{Experiment 3b}. The experiment will follow the same approach as
+Experiment 3a, except the masked priming cues in the experimental condition
+will be affective in nature, following Jraidi et al.’s method
+{\citep{jraidi2011}}.  A self-referential word (such as ‘me’, ‘I’) and a positive
+descriptor (‘smart’, ‘efficient’) will be displayed when the self-efficacy
+model predicts a low point relative to overall self-efficacy.  In another
+experimental condition, the effect of coupling of cognitive and affective
+priming will be observed. 
+
+\subsubsection{ Analysis }
+
+We wish to model at least self-efficacy, cognitive load, the availability of
+cognitively primed information, overall engagement, and problem-solving
+performance. The first three may be modelled on observable data; latter two on
+observed data and the first three products of the observables.  To get
+indicators of attentional state, we will obtain a power spectral density (PSD)
+graph for 4-second epochs while the student is solving problems.  These will be
+loaded into feature vectors which can be used later in multivariate regression
+models and classifiers.  We will represent scanpath as a sequence of
+timestamped (x, y) coordinates on the screen.
+
+For analysis of Experiment 1 data, we would like to use exploratory factor
+analysis (EFA) to isolate factors which may have an influence on performance
+other than those listed. Furthermore we would like to investigate the
+predictive power of the problem properties using regression analysis, and test
+predictive capability using a battery of classification techniques, such as
+SVM, neural networks, ID3, CART, and possibly others.
+
+For analysis of Experiment 2 data, we would like to perform autoregressive
+analysis on performance data as a function of predicted cognitive load,
+self-efficacy, and the presence of information dependences over time. In
+addition we would like to test the possibility of loading these features
+for previous $n$ periods into a vector to be used by classification
+algorithms (see above) to test their predictive capability.
+
+For Experiment 3, we will filter noise by calculating a mean scanpath.  For
+determining differences among conditions, we will use an ANOVA, and follow up
+with post-hoc comparison-of-means tests. For the masked priming experimental
+condition, we also plan for an autoregressive analysis as in Experiment 2,
+as well as a battery of classification techniques.
+
+Pending the results of Experiments 1-3, we would like to further investigate
+the construction of a hybrid model using approaches similar to those above.  We
+expect individual differences in the extent to which each variable influences
+performance will also arise. The experimental data also allows us to
+investigate such individual differences in the model parameters using
+clustering techniques, such as k-means and EM clustering.  Also, pending
+descriptives on the data, we may more freely explore the data set with the aim
+of predicting self-efficacy, cognitive load, the presence of primed information
+in working memory, overall engagement, and problem-solving performance given
+the observables and, in the case of problem-solving performance, the data
+products.  This predictive model will be used to create interventions (schedule
+problems, prime) based on what problem, or schedule of problems, ensure maximum
+likelihood of problem-solving success.
+
+\subsection{ Broader Impacts of the Proposed Work } 
+
+%\paragraph{}
+The project has the potential to assist in STEM instruction, particularly in
+helping students overcome attention-related barriers and impasses during the
+problem-solving process. The impact of the project extends but is not limited
+to students of programming courses; the ITS framework aims to be adaptable to
+other STEM (and even non-STEM) subjects.  A meta-analysis on computer-based
+scaffolding in STEM has shown that it positively influences learning (with
+Hedges g=.53) {\citep{belland2015}}.  If the ITS developed during the course of
+this study should face barriers to adoption in the STEM instruction community,
+the science gleaned from the proposed project could nonetheless aid in the
+development of superior ITS frameworks.  The project also has the potential to
+result in treatments to train attention in such a way that is conducive to
+problem-solving, as has been done in studies which use biofeedback training
+{\citep{li2009, li2011}}, and programs to train spatial thinking for STEM
+{\citep{taylor2013}}.  There exists potential for the cognitive priming
+component to teach unconscious processing in a way which is not possible with
+ordinary instruction. This would pave the way for the instructor to teach the
+ineffable parts of the problem-solving process; that is, to train efficient
+oculomotor processing as well as the student's debugging intuitions. 
+
+%\paragraph{} 
+The ITS itself offers a broad positive impact to STEM education.
+Even without attention-awareness or models of student preferences, the ITS
+offers to the course instructor an accessible and efficient means of delivering
+content to the student, and to the student an accessible and efficient means of
+reviewing the material.  The auto-grading component relieves the instructor of
+the task of manual grading, and gives the student immediate feedback on her
+work.
+
+%\paragraph{}
+The auto-grading component of LSU’s current ITS may be considered in its own
+right to provide a broad positive impact by relieving teachers and their
+assistants of the labor-intensive and time-consuming tasks involved in grading
+(code or otherwise). As a necessary step in automating response set evaluation,
+improving the accuracy of the auto-grading component would no doubt contribute
+to STEM instruction: not only would it improve the efficiency of the grading
+process, but it could be used to provide quicker feedback to students, who
+benefit from the immediacy.  
+
+Self-efficacy is a major factor in engagement with material and problem-solving
+performance, according to community perceptions {\citep{vivian2014}}. It has
+been shown that self-efficacy in STEM disciplines differs between women and men
+{\citep{boy2013, gonzalez2012}}, low-SES and high-SES groups
+{\citep{gonzalez2012}}, and minority and majority groups; also that groups with
+relatively low self-efficacy benefit from a mentoring program to raise it
+{\citep{macphee2013}}.  In the case of women in particular, an examination of
+long-term evidence suggests that initiatives have had little impact on the
+gendered patterns of participation  {\citep{smith2011}}. Many women finish a
+terminal bachelor's degree due to self-efficacy related reasons
+{\citep{boy2013}}.  It is possible that use of affective interventions with
+these groups at the onset of an introductory-level course may improve
+participation and retention {\citep{jraidi2011}}. 
+
+%\paragraph{} 
+It is possible that discovering problem schedules which maximally engage the
+student’s attention will motivate further participation in STEM. If the ITS
+gives a problem-solving schedule which is enjoyable and raises the
+self-efficacy of the student while minimizing her frustrations, the student may
+adopt a more favorable view of STEM. It is our hope that an attention-aware ITS
+which profiles its students would help attrition rates by minimizing the risk
+that a student drops a STEM program because of low engagement or self-efficacy.
+
+%\paragraph{}
+In addition, an intelligent tutoring system has the ability to aid students
+with disabilities.  As one study by Hawley at al.  indicates, one of the
+problems with transition from high school to higher education is ``restricted
+access to facilities in STEM environments'': students with visual or speech
+impairments often have barriers to participation in class which teachers do not
+know how to accommodate; and some students with physical disabilities have lack
+of access to reliable public transportation unless they live in the city
+{\citep{hawley2013, chapman2014}}. An ITS can be used remotely by those
+students with physical disabilities who could otherwise use computer
+technology.
+
+%\paragraph{} 
+An ITS uniquely offers the opportunity for a student to self-teach in a way
+which stimulates the motivation to do so. The ITS need not be restricted to the
+role of an assessment tool to be used in university course instruction;
+potentially a student could freely use it in the course of exploring STEM.  The
+system could be adapted to ``teach'' in other contexts.  We envision its use in
+computer-aided cognitive-behavioral therapy, or any psychological treatment
+model which uses education as a component. 
+
+%\paragraph{} 
+ITS offers further research potential in data-intensive educational psychology.
+Its assessment items are not limited to the course content; it could also
+intersperse psychological measures.  If a researcher were interested in finding
+whether or not e.g. gender stereotype threat played a role in performance on
+math tests, she could schedule questions from a psychological assessment to
+measure gender stereotype threat.  Having ready electronic access to the
+student’s raw responses to math questions, the researcher could easily perform
+the analysis to answer her research question. The ITS is also, of course,
+amenable to studies which examine effects of constructs such as stereotype
+threat on attention during problem-solving.
+
+\pagebreak
+\section{ Results from Prior NSF Support }
+
+\pagebreak
+\section{ References Cited }
+
+\bibliography{main}
+\bibliographystyle{apalike}
+
+%AlZoubi, Omar et al. (2014).  Classification of Brain-Computer Interface Data. SIGIR.
+%Belland, Brian R. & Walker, Andrew E. & Olsen, Megan Whitney & Leary, Heather (2015). A Pilot 
+%        Meta-Analysis of Computer-Based Scaffolding in STEM Education. Educational Technology & 
+%        Society, 18(1), p. 183-197.
+%Boy, Guy A (2013). From STEM to STEAM: Toward a Human Centred Education, Creativity & Learning 
+%        Thinking. ECCE ‘13.
+%Chaouachi, Maher et al. (2011).  Modeling Mental Workload using EEG Features for Intelligent Systems. 
+%        UMAP.
+%Chaouachi, Maher & Frasson, Claude (2012).  Mental Workload Engagement and Emotions: An 
+%        Exploratory Study for Intelligent Tutoring Systems.  ITS.
+%Eugster, Manuel J. A. et al. (2014).  Predicting Term-Relevance from Brain Signals. SIGIR.
+%Feidakis, Michalis et al. (2011).  Emotion Measurement in Intelligent Tutoring Systems: What, When and 
+%        How to Measure.  INCoS.
+%Galan, Federico Cirett & Beal, Carole R. (2012).  EEG Estimates of Engagement and Cognitive Workload 
+%        Predict Math Problem Solving Outcomes. UMAP.
+%Gebins, Alan et al. (1998).  Monitoring Working Memory Load during Computer-Based Tasks with EEG 
+%        Pattern Recognition Methods.  Human Factors.
+%Grant, E.R. & Spivey, M.J. (2003). Guiding Attention Guides Thought. Psychological Science, 14(5).
+%Haapalainen, Eija et al. (2010).  Psycho-Physiological Measures for Assessing Cognitive Load. UbiComp.
+%Hawley, Carolyn E. & Cardoso, Elizabeth & McMahon, Brian (2013). Adolescence to Adulthood in 
+%        STEM Education and Career Development: The Experience of Students at the Intersection of 
+%        Underrepresented Minor Status and Disability. Journal of Vocational Rehabilitation: 39, p. 193-204.
+%Jraidi, Imene et al. (2011).  Implicit Strategies for Intelligent Tutoring Systems. ITS.
+%Li, Xiaowei et al. (2009).  Towards Affective Learning with an EEG Feedback Approach.  MTDL.
+%Li, Yongchang et al. (2011).  A Real-time EEG-based BCI System for Attention Recognition in Ubiquitous 
+%        Environment. UAAII.
+%MacPhee, David & Farro, Samantha & Canetto, Silvia Sara (2013). Academic Self-Efficacy and 
+%        Performance of Underrepresented STEM Majors: Gender, Ethnic, and Social Class Patterns.  
+%        Analyses of Social Issues and Public Policy, 13(1), p. 347-369.
+%Mohler, Michael et al. (2001).  Learning to Grade Short Answer Questions using Semantic Similarity 
+%        Measures and Dependency Graph Alignments.  Proceedings of the 49th Annual Meeting of the 
+%        Association for Computational Linguistics.
+%McQuiggan, Scott W. et al. (2007).  Modeling self-efficacy in intelligent tutoring systems: an inductive        
+%        approach.  User Model User-Adaptive Interfaces.
+%Narayanan, Athi et al. (2014).  Computer Vision based Attentiveness Detection Methods in E-Learning.  
+%        ICONIAAC.
+%Nesbit, John C. and Liu, Qing. Intelligent tutoring systems and learning outcomes: A meta-analysis. Journal 
+%        of Educational Psychology, 2014.
+%Rodrigue, Mathieu et al. (2015).  Spatio-Temporal Detection of Divided Attention in Reading Applications 
+%        Using EEG and Eye Tracking.  IUI.
+%Smith, Emma (2011). Women into Science and Engineering? Gendered Participation in Higher Education 
+%        STEM Subjects. British Educational Research Journal: 37(6), p. 993-1014.
+%Szafir, Daniel & Mutlu, Bilge (2012).  Pay Attention! Designing Adaptive Agents that Monitor and 
+%       Improve User Engagement. CHI.
+%Szafir, Daniel & Mutlu, Bilge (2013).  ARTFuL: Adaptive Review Technology for Flipped Learning.  CHI.
+%Stevens, Ron et al. (2013).  Integrating EEG Models of Cognitive Load with Machine Learning Models of 
+%        Scientific Problem Solving.
+%Thompson, E. et al. (2008).  Bloom’s Taxonomy for CS Assessment.  Conferences in Research and 
+%        Practice in Information Technology Series, 78.
+%Vivian, Rebecca et al. (2014).  Can Everybody Learn to Code? Computer Science Community 
+%        Perceptions about Learning the Fundamentals of Programming. Koli Calling.
+%Walkington, Candace A. Using adaptive learning technologies to personalize instruction to student 
+%        interests: The impact of relevant contexts on performance and learning outcomes. Journal of 
+%        Educational Psychology, 105, 2013.
+
+
+\pagebreak
+\section{ Biographical Sketches }
+
+\subsection{ Senior Personnel }
+
+\subsection{ Other Personnel }
+
+\section{ Budget and Budget Justification  }
+
+\section{ Salaries and Wages.  }
+
+\subsection{ Fringe Benefits }
+
+\subsection{ Equipment  }
+
+\pagebreak
+\section{ Facilities, Equipment, and Other Resources }
+
+Room 2021 of the Louisiana Digital Media Center (LDMC) will be used to conduct
+the experiments. It is a conference room with stained-glass windows which
+allows for problem-solving in a distraction-free environment, and ensures
+privacy and confidentiality for the participants.
+
+% Room 201 of LSU's Audobon Hall may be used as an auxiliary room for conducting
+% the experiments, in case LDMC 2021 is not available at the time of a trial.
+
+Also, the Center for Computation and Technology has in its inventory IBM
+ThinkPad laptops (x301 model) with built-in webcams, which will be used as
+eye-tracking hardware. 
+
+\pagebreak
+\section{ Special Information and Supplementary Documentation }
+
+\subsection{ Postdoctoral Researcher Mentoring Plan  }
+
+%\paragraph{} 
+A postdoctoral researcher will be funded for two years for this project. The
+researcher will be guided through a postdoctoral mentoring plan, which will
+include mentoring activities designed to improve the skillset and experience
+necessary for professional and career advancement in academia.
+
+%\paragraph{} 
+The mentoring plan will include an individual development plan by the student
+to be discussed with the PI and co-PIs of the project.  The plan will include a
+list of long-term research objectives to be fulfilled through the course of
+postdoctoral work, and the steps necessary to fill those objectives. An initial
+meeting will be scheduled to review the plan.
+
+%\item Workshops and seminars offered by the Louisiana State University Computer
+%Science department and Center for Computation and Technology on career advancement
+%topics such as CV and resume building and the application process for careers
+%in academia. 
+
+%\paragraph{} 
+In addition, the mentoring plan will include scheduled interactions with
+mentors. These will take the form of regular meetings to discuss progress on
+the project and career advancement topics for an academic position, such as:
+
+\begin{itemize}
+\item the researcher's curriculum vitae
+\item the application process for faculty positions
+\item the search for funding for projects
+\item effective mentorship of undergraduate students
+\item scientific publication and presentation
+\item professional networking
+\end{itemize}
+
+%\paragraph{} 
+Here, the researcher will provide self-assessment according to
+the fulfillment of objectives laid out in the development plan, and receive
+feedback from mentors on the progress and direction of the work.
+
+%\paragraph{} 
+The postdoctoral researcher will review the Responsible Conduct of Research
+training annually to encourage mindfulness of issues related to the integrity
+of the research process, and be given opportunities to engage in open
+discussion on responsible conduct.
+
+%\paragraph{} 
+The fulfillment of objectives in the development plan, as well as structured
+discussions with the researcher on satisfaction with the mentoring program,
+will provide an indication of success of the mentoring program. 
+
+\pagebreak
+\subsection{ Data Management Plan  }
+
+%\paragraph{} 
+The Center for Computation and Technology (CCT) has two servers to support
+data preservation and management: the file server for storing and publishing
+data, and the database server for data-intensive applications.
+
+%\paragraph{} 
+The collected data consists of the following:
+
+\begin{itemize}
+
+\item the EEG data, which will be collected on the local machine in
+Comma-Separated Value (CSV), converted to European Data Format (EDF),
+compressed using bzip2, and stored on the CCT's file server
+
+\item the eye movement data, which will be collected on the local machine and
+stored on the CCT's file server
+
+\item the student's raw response data, which will be stored as text strings
+(except codes, which will be stored as plain-text files) in a SQL database
+on CCT's database server
+
+\item mouse cursor movement and idleness data, which will be stored
+on CCT's file server
+
+\end{itemize}
+
+
+%\paragraph{} 
+Since the data involves human subjects, confidentiality and privacy will be
+ensured by deleting any identifying information associated with the student's
+raw response data.  To assign the participant extra credit as incentive, the
+participants's name will be collected; however it will be removed from the
+database server as soon as the credit is awarded. 
+
+%\paragraph{} 
+If the participant has agreed to have their data disclosed, the data will be
+made available for the general public on the CCT's file server at a permanent
+address after all identifying information is removed to minimize the risk of
+the participant being uniquely identified.
+
+%\paragraph{} 
+Data products include the following:
+
+\begin{itemize}
+
+\item derivative or pre-processed data, such as power spectral density (PSD)
+graphs or other features extracted from EEG; scanpaths extracted from eye
+movement data; grades assigned to raw response data 
+
+\item source codes for programs or scripts to analyze raw data
+
+\item binary-encoded apparatus for performing classification and/or clustering
+tasks on data, such as neural networks
+
+\item the results of statistical tests; also charts, diagrams, tables, graphs,
+etc., which describe the raw data or results obtained from the data
+
+\end{itemize}
+
+%\paragraph{} 
+Also, in the interest of time-efficient documentation, hypotheses, experimental
+designs, notes, drawings, and so forth will be collected in a laboratory
+notebook by the graduate research assistant and postdoctoral researcher. These
+will be dated in the margins, kept legible, and will be sufficiently
+comprehensive so that the PI or co-PIs who read it could replicate the
+procedures. The documents will be scanned into an electronic format at
+conclusion of each phase of the study, and important notes may be typeset for
+annual reports.
+
+%\paragraph{} 
+Results may be published in academic journals or in conference proceedings,
+and presented at conferences or seminars.
+\end{document}
+
