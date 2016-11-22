@@ -1,0 +1,145 @@
+\documentclass[hidelinks,11pt]{article}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{tocloft}
+\hypersetup {
+ colorlinks,
+ linkcolor={red!50!black},
+ citecolor={red!50!black},
+ urlcolor={red!80!black} 
+}
+\renewcommand{\refname}{}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{8pt}
+%\setcounter{secnumdepth}{4}
+
+\begin{document}
+\title{LATTICE: Learning Attentional Traits In Tutoring Interactively for Cognitive Engagement}
+\maketitle
+\thispagestyle{empty}
+\pagestyle{empty}
+
+\pagebreak
+
+%\renewcommand\thesection{Section \arabic{section}: }
+%\renewcommand\thesubsection{Subsection \arabic{section}.\arabic{subsection}: }
+%\renewcommand\thesubsubsection{Subsubsection \arabic{section}.\arabic{subsection}.\arabic{subsubsection}: }
+%\renewcommand\theparagraph{Paragraph \arabic{section}.\arabic{subsection}.\arabic{subsubsection}.\arabic{paragraph}.}
+
+\section{ Project Summary }
+
+%\paragraph{}
+In computer programming instruction, the nature of attention given during the
+problem-solving process is a large factor in learning problem-solving skills
+and in performance of students. However, cueing attention to the end of
+facilitating problem-solving is a challenging task, as is formulating problems
+which are engaging to students so as to direct attention to the problem-solving
+process.  Intelligent tutoring systems (ITS) are computer-aided teaching and
+assessment tools designed to aid and supplement course instruction; most ITS
+systems provide adaptive tutoring, tailoring both the course content (facts,
+examples, diagrams, etc.) and assessments (quizzes, tests, homeworks, etc.) to
+students, in the hopes of engaging them.  However, there is to date no
+comprehensive model of the mediating effect of attention on problem-solving in
+an ITS. 
+
+%\paragraph{}
+The proposed project aims to construct such a model by utilizing established
+EEG and eye-tracking measures of attention, and using known factors (cognitive
+load, self-efficacy, domain-relevance) as a basis for further exploration. In
+so doing, it also aims to incorporate the model into an ITS to provide a
+practical tool for STEM instruction, which in addition to providing
+auto-grading capability, is able to engage student interests and direct
+atttention in a manner which maximally facilitates problem-solving.
+
+\subsection{ Intellectual Merit }
+
+%\paragraph{}
+The proposed project aims to advance knowledge by identifying changes in
+engagement due to variables associated with problems.  These include Bloom's
+cognitive taxonomic level (knowledge, comprehension, application, analysis,
+evaluation, synthesis), problem difficulty (easy, medium, hard), and domain
+(biology, chemistry, physics, art, music, etc.).  We consider these per-concept
+(for-loops, arrays, sorting algorithms, etc.).
+
+%\paragraph{}
+Furthermore, the project endeavors to explore the specific effects of problems
+on engagement and to identify a means of scheduling problems and course
+content, such that engagement is achieved in a way which maximally facilitates
+problem-solving. Finally, it aims to leverage the unique potential of a
+computer-aided tutoring system to assist in both conscious and unconscious
+cognitive processes during problem-solving in a manner which traditional
+instruction cannot. Specifically, masked priming has been shown to be effective
+at raising self-efficacy \cite{jraidi2011}, and visual priming has been shown
+to facilitate insight-based problem solving \cite{grant2003}.  The project will
+aim to explore the limitations of this assistance.
+
+\subsection{ Broader Impact }
+
+%\paragraph{}
+The project has the potential to assist in STEM instruction, particularly in
+helping students overcome attention-related barriers and impasses during the
+problem-solving process. The impact of the project extends but is not limited
+to students of programming courses; the ITS framework aims to be adaptable to
+other STEM (and even non-STEM) subjects.  A meta-analysis on computer-based
+scaffolding in STEM has shown that it positively influences learning (with
+Hedges g=.53) \cite{belland2015}.  If the ITS developed during the course of
+this study should face barriers to adoption in the STEM instruction community,
+the science gleaned from the proposed project could nonetheless aid in the
+development of superior ITS frameworks.  The project also has the potential to
+result in treatments to train attention in such a way that is conducive to
+problem-solving, as has been done in studies which use biofeedback training
+\cite{li2009}, \cite{li2011}, and programs to train spatial thinking for
+STEM \cite{taylor2013}.
+
+%\paragraph{}
+The auto-grading component of LSU’s current ITS may be considered in its own
+right to provide a broad positive impact by relieving teachers and their
+assistants of the labor-intensive and time-consuming tasks involved in grading
+(code or otherwise). As a necessary part of automated response set evaluation,
+improving the accuracy of the auto-grading component would no doubt contribute
+to STEM instruction: not only would it improve the efficiency of the grading
+process, but it could be used to provide quicker feedback to students, who
+benefit from the immediacy.  
+
+%A meta-analysis on ITS concluded that ITS “outperformed, in aggregate, the
+%other modes of instruction to which it was compared in evaluative studies”
+%[citation]. It has been also shown that the inclusion of context (student
+%background, previously solved problems etc.) in an ITS algorithm has a
+%significant positive impact on student performance [citation].
+
+%\paragraph{}
+
+Self-efficacy is a major factor in engagement with material and problem-solving
+performance, according to community perceptions \cite{vivian2014}. It has been
+shown that self-efficacy in STEM disciplines differs between women and men
+\cite{boy2013} \cite{gonzalez2012}, low-SES and high-SES groups
+\cite{gonzalez2012}, and minority and majority groups; also that groups with
+relatively low self-efficacy benefit from a mentoring program to raise it
+\cite{macphee2013}.  In the case of women in particular, an examination of
+long-term evidence suggests that initiatives have had little impact on the
+gendered patterns of participation  \cite{smith2011}. Many women finish a
+terminal bachelor's degree due to self-efficacy related reasons \cite{boy2013}.
+It is possible that use of affective interventions with these groups at the
+onset of an introductory-level course may improve participation and retention
+\cite{jraidi2011}. 
+
+%\paragraph{}
+In addition, an intelligent tutoring system has the ability to aid students
+with disabilities.  As one study by Hawley at al.  indicates, one of the
+problems with transition from high school to higher education is ``restricted
+access to facilities in STEM environments'': students with visual or speech
+impairments often have barriers to participation in class which teachers do not
+know how to accommodate; and some students with physical disabilities have lack
+of access to reliable public transportation unless they live in the city
+\cite{hawley2013} \cite{chapman2014}. An ITS can be used remotely by those
+students with physical disabilities who could otherwise use computer
+technology.
+
+
+\pagebreak
+\section{ References Cited }
+
+\bibliography{main}
+\bibliographystyle{apalike}
+\end{document}
+

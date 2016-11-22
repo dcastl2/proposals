@@ -1,0 +1,11 @@
+digraph System {
+
+  rankdir = TB;
+  node  [shape=record];
+
+  rank = same;
+  information_item [label="{id|concept|difficulty|bloom|domain| |deps}"]
+  assessment_item  [label="{id|concept|difficulty|bloom|domain|{format|solution}|deps}"]
+
+  }
+

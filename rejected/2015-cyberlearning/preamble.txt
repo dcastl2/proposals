@@ -1,0 +1,6 @@
+\usepackage{geometry}
+\geometry{ rmargin=1.25in
+          ,lmargin=1.25in
+          ,tmargin=1.25in
+          ,bmargin=1.25in
+         }

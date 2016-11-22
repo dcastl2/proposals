@@ -1,0 +1,26 @@
+digraph System {
+
+  rankdir = LR;
+
+  node  [shape=circle];
+  B;
+  D;
+  E;
+  F;
+  H;
+  I;
+
+  node [style=filled color=gray];
+  A;
+  C;
+  G;
+
+  A -> C,B;
+  B -> D,E;
+  D -> I;
+  I -> H;
+  E -> F;
+  C -> G;
+
+}
+

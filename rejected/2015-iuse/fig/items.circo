@@ -1,0 +1,19 @@
+digraph System {
+
+  rankdir = BT;
+  node  [shape=record, style=filled, color=grey];
+
+  lesson           [label="information items"] 
+  item1 [label="{<id>2|expressions|easy|comprehension|mathematics|<deps>NULL}"]
+  item2 [label="{<id>3|selection|medium|application|mathematics|<deps>2}"]
+  item3 [label="{<id>5|repetition|medium|application|biology|<deps>2,3}"]
+
+  lesson -> item1:s,item2:s,item3:s;
+  subgraph {
+   rankdir=same;
+   item2:deps -> item1:id;
+   item3:deps -> item2:id;
+   item3:deps -> item1:id;
+  }
+}
+

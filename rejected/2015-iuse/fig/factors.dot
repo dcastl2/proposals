@@ -1,0 +1,25 @@
+digraph System {
+
+  rankdir = TB;
+  node  [shape=circle];
+
+  subgraph {
+    rank=same;
+    A [label="Attendance"];
+    B [label="Homework Grade"];
+    C [label="Test Score"];
+  }
+
+  subgraph {
+    rank=same;
+    E [color=white style=filled fillcolor=gray label="Hours slept"];
+    D [color=white style=filled fillcolor=gray label="Hours studied"];
+    F [color=white style=filled fillcolor=gray label="Interest level"];
+  }
+
+  A->E,D,F;
+  B->E,D,F;
+  C->E,D,F;
+
+}
+

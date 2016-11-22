@@ -1,0 +1,22 @@
+digraph System {
+
+  rankdir = TB;
+  node  [shape=record];
+
+  course           [label="course"] 
+
+  lesson           [label="information items"] 
+  information_item [label="{id|concept|difficulty|bloom|domain|<deps>deps}"]
+  information_ids  [label="2|3|5|7"]
+
+  assessment       [label="assessment items"] 
+  assessment_item  [label="{id|concept|difficulty|bloom|domain|format|solution|deps}"]
+
+  course                 -> lesson
+  course                 -> assessment
+  lesson                 -> information_item
+  assessment             -> assessment_item 
+  information_item:deps  -> information_ids
+
+}
+

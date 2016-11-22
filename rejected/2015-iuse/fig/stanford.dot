@@ -1,0 +1,29 @@
+digraph System {
+
+  rankdir = LR;
+  node  [shape=circle, style=filled, color=gray];
+
+  Lists      ;
+  of         ;
+  integers   ;
+  and        ;
+  characters ;
+  were       ;
+  rotated    ;
+  by         ;
+  one        ;
+  element    ;
+  clockwise  ;
+
+  rotated  -> Lists      [ label="nsubjpass" ] ;
+  rotated  -> were       [ label="auxpass"   ] ;
+  rotated  -> by         [ label="prep"      ] ;
+  Lists    -> of         [ label="prep"      ] ;
+  of       -> integers   [ label="pobj"      ] ;
+  integers -> and        [ label="cc"        ] ;
+  integers -> characters [ label="conj"      ] ;
+  by       -> element    [ label="pobj"      ] ;
+  element  -> one        [ label="adv"       ] ;
+  rotated  -> clockwise  [ label="adv"       ] ;
+
+}

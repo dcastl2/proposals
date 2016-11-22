@@ -1,0 +1,35 @@
+digraph System {
+
+  ranksep=4.0;
+  node  [shape=circle fontsize=20] 
+
+  BRHS       [ label="Baton Rouge High Schools"    ] ;
+  BRPS       [ label="Baton Rouge Primary Schools" ] ;
+  BR         [ label="Baton Rouge"                 ] ;
+  SLU        [ label="Southeastern University"     ] ;
+  SELU       [ label="Southern University"         ] ;
+  Tulane     [ label="Tulane"                      ] ;
+  LSU_MATH   [ label="LSU Math Department"         ] ;
+
+  NSF        [ label="National Science Foundation" ] ;
+  NOLA       [ label="New Orleans"                 ] ;
+  Hammond    [ label="Hammond"                     ] ;
+  Livingston [ label="Livingston"                  ] ;
+  LIGO       [ label="LIGO"                        ] ;
+
+  node  [style=filled, color=grey];
+
+  LSU_CSC    [ label="LSU Comp. Sci. Department"   ] ;
+  CCT        [ label="Center for Comp. & Techn."   ] ;
+
+  CCT     -> BRHS, LIGO, NSF;
+  LSU_CSC -> CCT, LSU_MATH, Tulane, SLU, SELU;
+
+  BRHS    -> BR, BRPS;
+  SLU     -> Hammond;
+  Tulane  -> NOLA;
+  LIGO    -> Livingston;
+   
+
+}
+

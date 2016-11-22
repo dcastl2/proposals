@@ -1,0 +1,14 @@
+digraph System {
+
+  rankdir = TB;
+  node  [shape=circle, style=filled, color=grey];
+  //edge  [labeldistance=5.0, labelangle=90]
+
+  "interface"   -> "auto-grader"  [label="response"];
+  "auto-grader" -> "profiler"     [label="grade"];
+  "profiler"    -> "scheduler"    [label="abilities"];
+  "scheduler"   -> "databases"    [label="query"];
+  "databases"   -> "interface"    [label="problem"];
+
+}
+
